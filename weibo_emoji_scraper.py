@@ -326,7 +326,7 @@ for phrase, img_url in all_emojis.items():
             img_url = img_url.replace(WEIBO_EMOJI_WEBROOT, '')
         else:
             img_url = re.sub('http://ww[0-9]+.sinaimg.cn/', '', img_url)
-        all_emojis[phrase] = img_url
+        all_emojis[phrase] = re.sub(r'[^/]+/\.\./', '', img_url)    # relative paths
 
     except Exception as e:
         print 'ERROR for ', phrase + '\t' + img_url
