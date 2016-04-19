@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding: utf-8 -*-
 
 import sys
 import re
@@ -207,6 +207,11 @@ LEGACY_EMOJIS = {
     '[歪果仁夏克立]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/9c/bbqnxiakeli_org.gif',
     '[xkl扭]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/25/xklniu_org.gif',
     '[xkl你拍一]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/da/xklnipaiyi_org.gif',
+    '[星星]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/81/dp_highlighted_org.gif',
+    '[xkl扭扭]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/25/xklniu_org.gif',
+    '[空星]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/2e/dp_rating02_org.gif',
+    '[xkl你拍一啊]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/da/xklnipaiyi_org.gif',
+    '[半星]': 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/78/dp_halfrating_org.gif',
 }
 WEIBO_EMOJI_WEBROOT = 'http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/'
 
@@ -250,6 +255,7 @@ for emoji_type in [emoji_type.strip() for emoji_type in args.emoji_types.split('
             debug_output.write(json.dumps(emojis, indent=4, separators=(',', ': ')))
 
 print '%d total emojis from API.' % len(latest_emojis)
+print '%d total emojis from legacy.' % len(LEGACY_EMOJIS.keys())
 print '%d total emojis generated.' % len(all_emojis)
 
 # Generate json with Weibo full image paths
