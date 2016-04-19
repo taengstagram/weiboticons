@@ -294,7 +294,8 @@ print '%d total emojis in master.' % len(master_list)
 
 # Check if emojis in master is missing from all_emojis
 for phrase, img_url in master_list.items():
-    if phrase not in all_emojis and phrase.encode('utf-8') not in all_emojis:
+    #if phrase not in all_emojis and phrase.encode('utf-8') not in all_emojis:
+    if not all_emojis.get(phrase) and not all_emojis.get(phrase.encode('utf-8')):
         print 'MISSING: ', phrase, img_url
 
 for phrase, img_url in all_emojis.items():

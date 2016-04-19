@@ -8,23 +8,34 @@
 
     weiboticons.use_remote = true;
     weiboticons.local_img_root = 'weiboticons/';
+    weiboticons.html_hook = null;
 
     weiboticons.replace = function(text) {
         text = text.replace(weiboticons.pattern, function(emojichar) {
-            if (!weiboticons.map[emojichar]) { return emojichar; }
-            var img = '';
+            if (!weiboticons.map[emojichar]) {
+                if (weiboticons.html_hook) {
+                    return weiboticons.html_hook(emojichar, null, emojichar);
+                } else {
+                    return emojichar;
+                }
+            }
+
+            var emoji_url = '';
             if (weiboticons.use_remote) {
                 if (weiboticons.map[emojichar].lastIndexOf("http", 0) === 0) {
-                    img = '<img class="weiboticon" title="' + emojichar + '" src="' + weiboticons.map[emojichar] + '">';
+                    emoji_url = weiboticons.map[emojichar];
                 } else {
-                    img = '<img class="weiboticon" title="' + emojichar + '" src="' + weiboticons.remote_img_root
-                        + weiboticons.map[emojichar] + '">';
+                    emoji_url =  weiboticons.remote_img_root + weiboticons.map[emojichar];
                 }
             } else {
-                img = '<img class="weiboticon" title="' + emojichar + '" src="' + weiboticons.local_img_root
-                    + weiboticons.map[emojichar].replace(/http:\/\/ww[0-9]+\.sinaimg\.cn\//, '') + '">';
+                emoji_url = weiboticons.local_img_root + weiboticons.map[emojichar].replace(/http:\/\/ww[0-9]+\.sinaimg\.cn\//, '');
             }
-            return img;
+            var img = '<img class="weiboticon" title="' + emojichar + '" src="' + emoji_url + '">';
+            if (weiboticons.html_hook) {
+                return weiboticons.html_hook(emojichar, emoji_url, img);
+            } else {
+                return img;
+            }
         });
         return text;
     };
