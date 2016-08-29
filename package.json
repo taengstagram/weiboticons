@@ -1,0 +1,19 @@
+{
+  "name": "weiboticons",
+  "version": "1.0.0",
+  "description": "Utilities for working with Weibo emojis.",
+  "main": "libs/js/weiboticons.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-taengstagram:taengstagram/weiboticons.git"
+  },
+  "keywords": [
+    "weibo",
+    "emoji"
+  ],
+  "author": "taengstagram",
+  "license": "MIT"
+}
