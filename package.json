@@ -1,6 +1,6 @@
 {
   "name": "weiboticons",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Utilities for working with Weibo emojis.",
   "main": "libs/js/weiboticons.min.js",
   "scripts": {
