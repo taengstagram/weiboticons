@@ -280,7 +280,7 @@ for phrase, img_url in LEGACY_EMOJIS.items():
 for emoji_type in [emoji_type.strip() for emoji_type in args.emoji_types.split(',')]:
     emojis = client.emotions.get(type=emoji_type)
     for emoji in emojis:
-        if not emoji['url'].endswith('.gif'):
+        if not emoji['url'].endswith('.gif') and not emoji['url'].endswith('.png'):
             # skip non-gif emojis, usually swf
             continue
         phrase = emoji['phrase']
